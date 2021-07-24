@@ -105,8 +105,4 @@
 </nav>
 
 
-<div class="container">
 
-    @yield('grelha-imoveis')
-
-</div>
