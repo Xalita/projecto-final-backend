@@ -15,7 +15,7 @@ class ImoveisController extends Controller
      */
     public function index()
     {
-        return view ('imoveis.index');
+        return view ('imoveis.index', ['imoveis', Imovel::all()]);
     }
 
     /**
@@ -25,7 +25,7 @@ class ImoveisController extends Controller
      */
     public function create()
     {
-        //
+        return view('imoveis.create');
     }
 
     /**
@@ -36,7 +36,10 @@ class ImoveisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $imovel = $this->fillImovel(new Imovel(), $input);
+        $imovel->save();
     }
 
     /**
@@ -45,9 +48,10 @@ class ImoveisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $imovel = Imovel::all();
+        return view('imoveis.show', ["imovel"=> $imovel]);
     }
 
     /**
@@ -83,4 +87,12 @@ class ImoveisController extends Controller
     {
         //
     }
+
+    public function fillImovel(Imovel $imovel, array $input)
+    {
+        $imovel->local = $input ['local'];
+        $imovel->valor = $input ['valor'];
+        $imovel->tipo_de_imovel = $input['tipo_de_imovel'];
+    }
+
 }

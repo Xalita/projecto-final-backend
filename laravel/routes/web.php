@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImoveisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('imoveis', ImoveisController::class);
+Route::resource('imoveis', ImoveisController::class)->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

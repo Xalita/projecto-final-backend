@@ -23,6 +23,10 @@
                         <x-nav-link href="{{route('imoveis.index')}}" >
                             {{ __('Comprar') }}
                         </x-nav-link>
+
+                        <x-nav-link href="{{route('imoveis.index')}}" >
+                            {{ __('Arrendar') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -99,3 +103,10 @@
         </div>
     </div>
 </nav>
+
+
+<div class="container">
+
+    @yield('grelha-imoveis')
+
+</div>
