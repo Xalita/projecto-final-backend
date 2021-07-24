@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (Auth::check() && Auth::user()->tipo == "cliente")
+                        <x-nav-link href="{{route('imoveis.create')}}" >
+                            {{ __('Vender') }}
+                        </x-nav-link>
+
+                        <x-nav-link href="{{route('imoveis.index')}}" >
+                            {{ __('Comprar') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
