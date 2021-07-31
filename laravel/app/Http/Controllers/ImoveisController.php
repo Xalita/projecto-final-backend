@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use app\Models\Imovel;
+use App\Models\Imovel;
+use App\Models\User;
 
 class ImoveisController extends Controller
 {
@@ -15,7 +16,8 @@ class ImoveisController extends Controller
      */
     public function index()
     {
-        return view ('imoveis.index');
+
+        return view ('imoveis.index', ['batatas' => Imovel::all()]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ImoveisController extends Controller
      */
     public function create()
     {
-        //
+        return view('imoveis.create', );
     }
 
     /**
@@ -36,18 +38,23 @@ class ImoveisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $imovel = $this->fillImovel(new Imovel(), $input);
+        $imovel->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Imovel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $imovel = Imovel::find($id);
+        // dd($imovel);
+        return view('imoveis.show', ["cebolas" => $imovel]);
     }
 
     /**
@@ -83,4 +90,15 @@ class ImoveisController extends Controller
     {
         //
     }
+
+    public function fillImovel(Imovel $imovel, array $input)
+    {
+        $imovel->local = $input ['local'];
+        $imovel->valor = $input ['valor'];
+        $imovel->tipo_de_imovel = $input['tipo_de_imovel'];
+
+        return $imovel;
+    }
+
+
 }

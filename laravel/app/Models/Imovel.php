@@ -12,4 +12,10 @@ class Imovel extends Model
     protected $fillable = ['locar','valor','tipo_de_imovel','foto_imovel'];
 
     protected $table = 'imoveis';
+
+    public function getValor() {
+        return $this->valor;
+    }
+
+
 }

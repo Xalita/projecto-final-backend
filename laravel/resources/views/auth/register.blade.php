@@ -26,6 +26,20 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+                        {{-- tipo de User --}}
+
+                        <div class="mt-4">
+                            <x-label for="tipo" :value="__('Tipo de User')" />
+
+                            <select required id="tipo" class="block mt-1 w-full"
+                                            name="tipo">
+                                            <option name="mediador" value="mediador">Mediador</option>
+                                            <option name="cliente" value="cliente">Cliente</option>
+                                            <option name="admin" value="admin">Admin</option>
+
+                            </select>
+                        </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
